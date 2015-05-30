@@ -40,6 +40,14 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void **ppData)
 	logprintf("-------------------------------------------------");
 	logprintf("");
 	logprintf("Loading ...");
+
+	/*
+
+	*/
+	/*DWORD a = CUtils::FindPattern("\x80\xB8\x67\x0C\x00\x00\x02\x74\x1D\x8B\x45\xD8\x89\x04\x24", "xx????xx?xxxxxx") + 2;
+	logprintf("0x%x - 0x%x", a, *(DWORD *)a);*/
+	// Install the exception handler
+	CExceptionHandler::Install();
 	// Initialize linux tick count
 #ifndef _WIN32
 	CUtils::LoadTickCount();
@@ -51,21 +59,6 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void **ppData)
 		logprintf("Failed. (Cant create server instance)");
 		return false;
 	}
-	// Initialize the server
-	BYTE byteError = 0;
-	if((byteError = pServer->Initialize()) != 0)
-	{
-		// Get the error
-		char szError[64];
-		CUtils::GetPluginError(byteError, szError);
-		logprintf("Failed. (Error: %s)", szError);
-		return false;
-	}
-	// Initialize the starting tick
-	dwStartTick = GetTickCount();
-
-	logprintf("FCNPC Loaded.");
-	logprintf("");
 	return true;
 }
 
@@ -163,7 +156,23 @@ AMX_NATIVE_INFO PluginNatives[ ] =
 
 PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX *pAMX) 
 {
-
+	if(!bServerInit)
+	{
+		// Initialize the server
+		BYTE byteError = 0;
+		if((byteError = pServer->Initialize()) != 0)
+		{
+			// Get the error
+			char szError[64];
+			CUtils::GetPluginError(byteError, szError);
+			logprintf("Failed. (Error: %s)", szError);
+			exit(0);
+		}
+		// Initialize the starting tick
+		dwStartTick = GetTickCount();
+		// Set the initialized flag
+		bServerInit = true;
+	}
 	// Register the AMX
 	CCallbackManager::RegisterAMX(pAMX);
 	// Register the plugin natives for the amx instance
@@ -179,8 +188,6 @@ PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX *pAMX)
 
 PLUGIN_EXPORT void PLUGIN_CALL ProcessTick() 
 {
-	// Set the initialized flag
-	bServerInit = true;
 	// Check if we need to process
 	if((GetTickCount() - dwStartTick) >= 5)
 	{

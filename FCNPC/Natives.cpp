@@ -11,10 +11,10 @@
 #include "Main.h"
 
 extern CServer					*pServer;
-extern logprintf_t				logprintf;
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_Create(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_Create");
 	// Get the name length
 	int iLength = 0;
 	cell *pAddress = NULL;
@@ -36,6 +36,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_Create(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_Destroy(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_Destroy");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -48,6 +49,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_Destroy(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_Spawn(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(5, "FCNPC_Spawn");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the NPC skin id
@@ -68,6 +70,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_Spawn(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_Respawn(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_Respawn");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -80,6 +83,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_Respawn(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_IsSpawned(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_IsSpawned");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -92,6 +96,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_IsSpawned(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_Kill(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_Kill");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -105,6 +110,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_Kill(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_IsDead(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_IsDead");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -117,6 +123,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_IsDead(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetPosition(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(4, "FCNPC_SetPosition");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the position coordinates
@@ -134,6 +141,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetPosition(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetPosition(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(4, "FCNPC_GetPosition");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -171,6 +179,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetPosition(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetAngle(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetAngle");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the angle
@@ -186,6 +195,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetAngle(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetAngle(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetAngle");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	float Angle = 0.0f;
@@ -200,6 +210,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetAngle(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetInterior(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetInterior");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the interior
@@ -215,6 +226,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetInterior(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetInterior(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetInterior");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -227,6 +239,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetInterior(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetQuaternion(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(5, "FCNPC_SetQuaternion");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the quaternion vector
@@ -246,6 +259,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetQuaternion(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetQuaternion(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(5, "FCNPC_GetQuaternion");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -268,19 +282,19 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetQuaternion(AMX *amx, cell *params)
 		return 0;
 	}
 	// Get the player quaternion
-	CVector3 vecVelocity;
+	CVector3 vecQuaternion;
 	float fAngle;
-	pServer->GetPlayerManager()->GetAt(iNPCId)->GetQuaternion(&vecVelocity, &fAngle);
+	pServer->GetPlayerManager()->GetAt(iNPCId)->GetQuaternion(&vecQuaternion, &fAngle);
 	// Get the argument pointers and set its value
 	cell *pAddress = NULL;
 	amx_GetAddr(amx, params[2], &pAddress);
-	*pAddress = amx_ftoc(vecVelocity.fX);
+	*pAddress = amx_ftoc(vecQuaternion.fX);
 
 	amx_GetAddr(amx, params[3], &pAddress);
-	*pAddress = amx_ftoc(vecVelocity.fY);
+	*pAddress = amx_ftoc(vecQuaternion.fY);
 
 	amx_GetAddr(amx, params[4], &pAddress);
-	*pAddress = amx_ftoc(vecVelocity.fZ);
+	*pAddress = amx_ftoc(vecQuaternion.fZ);
 
 	amx_GetAddr(amx, params[5], &pAddress);
 	*pAddress = amx_ftoc(fAngle);
@@ -289,6 +303,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetQuaternion(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetVelocity(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(4, "FCNPC_SetVelocity");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the velocity vector
@@ -306,6 +321,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetVelocity(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetVelocity(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(4, "FCNPC_GetVelocity");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -342,6 +358,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetVelocity(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetHealth(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetHealth");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the health
@@ -357,6 +374,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetHealth(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetHealth(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetHealth");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	float fHealth = 0.0f;
@@ -371,6 +389,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetHealth(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetArmour(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetArmour");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the armour
@@ -386,6 +405,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetArmour(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetArmour(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetArmour");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	float fArmour = 0.0f;
@@ -400,6 +420,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetArmour(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetSkin(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetSkin");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the skin
@@ -415,6 +436,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetSkin(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetSkin(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetSkin");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -427,6 +449,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetSkin(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetKeys(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetKeys");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the keys
@@ -446,6 +469,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetKeys(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetKeys(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(4, "FCNPC_GetKeys");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -483,6 +507,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetKeys(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetSpecialAction(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetSpecialAction");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the action id
@@ -498,6 +523,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetSpecialAction(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetSpecialAction(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetSpecialAction");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -510,6 +536,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetSpecialAction(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GoTo(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(7, "FCNPC_GoTo");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the velocity vector
@@ -535,6 +562,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GoTo(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_Stop(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_Stop");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -548,6 +576,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_Stop(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_IsMoving(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_IsMoving");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -560,6 +589,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_IsMoving(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetWeapon(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetWeapon");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the weapon id
@@ -575,6 +605,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetWeapon(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetWeapon(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetWeapon");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -587,6 +618,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetWeapon(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetAmmo(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetAmmo");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the ammo
@@ -602,6 +634,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetAmmo(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetAmmo(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetAmmo");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -614,6 +647,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetAmmo(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_AimAt(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(5, "FCNPC_AimAt");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the aim vector
@@ -626,6 +660,13 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_AimAt(AMX *amx, cell *params)
 	if(!pServer->GetPlayerManager()->IsPlayerConnected(iNPCId))
 		return 0;
 
+	/*// Thanks to abagail
+	CVector3 vecPosition;
+	pServer->GetPlayerManager()->GetAt(iNPCId)->GetPosition(&vecPosition);
+	// The coordinates are too far away to shoot at.
+	if (amx_ftoc(vecPosition.fX) > fX + 100.0 || amx_ftoc(vecPosition.fX) < fX + 100.0 || amx_ftoc(vecPosition.fY) > fY + 100.0 || amx_ftoc(vecPosition.fY) < fY + 100.0)
+		return 0;*/
+
 	// Set the player aiming
 	pServer->GetPlayerManager()->GetAt(iNPCId)->AimAt(CVector3(fX, fY, fZ), !iShoot ? false : true);
 	return 1;
@@ -633,6 +674,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_AimAt(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_MeleeAttack(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_MeleeAttack");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the attack time
@@ -648,10 +690,9 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_MeleeAttack(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_StopAttack(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_StopAttack");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
-	// Get the attack time
-	int iTime = (int)params[2];
 	// Make sure the player is valid
 	if(!pServer->GetPlayerManager()->IsPlayerConnected(iNPCId))
 		return 0;
@@ -664,6 +705,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_StopAttack(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_StopAim(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_StopAim");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -677,6 +719,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_StopAim(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_IsAiming(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_IsAiming");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -689,6 +732,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_IsAiming(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_IsShooting(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_IsShooting");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -701,6 +745,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_IsShooting(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_IsReloading(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_IsReloading");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -713,6 +758,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_IsReloading(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_EnterVehicle(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(4, "FCNPC_EnterVehicle");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the vehicle id
@@ -731,10 +777,9 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_EnterVehicle(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_ExitVehicle(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_ExitVehicle");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
-	// Get the vehicle id
-	int iVehicleId = (int)params[2];
 	// Make sure the player is valid
 	if(!pServer->GetPlayerManager()->IsPlayerConnected(iNPCId))
 		return 0;
@@ -745,6 +790,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_ExitVehicle(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_PutInVehicle(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(3, "FCNPC_PutInVehicle");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the vehicle id
@@ -761,6 +807,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_PutInVehicle(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_RemoveFromVehicle(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_RemoveFromVehicle");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -773,6 +820,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_RemoveFromVehicle(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetVehicleID(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetVehicleID");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -785,6 +833,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetVehicleID(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetVehicleSeat(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetVehicleSeat");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -797,6 +846,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetVehicleSeat(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_StartRecordingPlayback(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_StartRecordingPlayback");
 	// Get the npc id
 	int iNPCId = (int)params[1];
 	// Get the filename length
@@ -824,6 +874,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_StartRecordingPlayback(AMX *amx, cell *para
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_StopRecordingPlayback(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_StopRecordingPlayback");
 	// Get the npc id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -837,6 +888,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_StopRecordingPlayback(AMX *amx, cell *param
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_PauseRecordingPlayback(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_PauseRecordingPlayback");
 	// Get the npc id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -850,6 +902,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_PauseRecordingPlayback(AMX *amx, cell *para
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_ResumeRecordingPlayback(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_ResumeRecordingPlayback");
 	// Get the npc id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -863,6 +916,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_ResumeRecordingPlayback(AMX *amx, cell *par
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetUpdateRate(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_SetUpdateRate");
 	// Get the update rate
 	int iRate = (int)params[1];
 	// Set the update rate
@@ -872,6 +926,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetUpdateRate(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_OpenNode(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_OpenNode");
 	// Get the node id
 	int iNodeId = (int)params[1];
 	// Open the node
@@ -880,6 +935,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_OpenNode(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_CloseNode(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_CloseNode");
 	// Get the node id
 	int iNodeId = (int)params[1];
 	// Close the node
@@ -889,6 +945,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_CloseNode(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_IsNodeOpen(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_IsNodeOpen");
 	// Get the node id
 	int iNodeId = (int)params[1];
 	// Open the node
@@ -897,6 +954,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_IsNodeOpen(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetNodeType(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetNodeType");
 	// Get the node id
 	int iNodeId = (int)params[1];
 	// Make sure the node is valid
@@ -909,6 +967,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetNodeType(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetNodePointCount(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_GetNodePointCount");
 	// Get the node id
 	int iNodeId = (int)params[1];
 	// Make sure the node is valid
@@ -921,6 +980,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetNodePointCount(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetNodePointPosition(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(4, "FCNPC_GetNodePointPosition");
 	// Get the node id
 	int iNodeId = (int)params[1];
 	// Make sure the player is valid
@@ -958,6 +1018,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetNodePointPosition(AMX *amx, cell *params
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_SetNodePoint(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(2, "FCNPC_SetNodePoint");
 	// Get the node id
 	int iNodeId = (int)params[1];
 	// Get the point
@@ -973,6 +1034,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_SetNodePoint(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetNodeInfo(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(4, "FCNPC_GetNodeInfo");
 	// Get the node id
 	int iNodeId = (int)params[1];
 	// Make sure the player is valid
@@ -1009,6 +1071,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetNodeInfo(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_PlayNode(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(3, "FCNPC_PlayNode");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Get the node id
@@ -1029,6 +1092,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_PlayNode(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_StopPlayingNode(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_StopPlayingNode");
 	// Get the NPC id
 	int iNPCId = (int)params[1];
 	// Make sure the player is valid
@@ -1042,6 +1106,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_StopPlayingNode(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_GetZGround(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(3, "FCNPC_GetZGround");
 	// Get the X coord
 	float fX = amx_ctof(params[1]);
 	// Get the Y coord
@@ -1058,6 +1123,7 @@ cell AMX_NATIVE_CALL CNatives::FCNPC_GetZGround(AMX *amx, cell *params)
 
 cell AMX_NATIVE_CALL CNatives::FCNPC_InitZMap(AMX *amx, cell *params)
 {
+	CHECK_PARAMS(1, "FCNPC_InitZMap");
 	// Get the filename length
 	int iLength = 0;
 	cell *pAddress = NULL;

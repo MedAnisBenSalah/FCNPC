@@ -37,38 +37,15 @@ CServer::~CServer()
 
 BYTE CServer::Initialize()
 {
-	// Detect samp server version
-	eSAMPVersion sampVersion = SAMP_VERSION_UNKNOWN;
-#ifdef _WIN32
-	if (*(DWORD *)0x45A1B0 == 0x24748B56) 
-	{ 
-		sampVersion = SAMP_VERSION_03Z_R2; 
-		logprintf("SAMP Server version 0.3z R2-2 (Windows) detected. Initializing ..."); 
-	} 
-	else
-		return 6;
-#else
-	if(*(DWORD *)0x80A7577 == 0x01F4FB81)
-	{
-		sampVersion = SAMP_VERSION_03Z_R2;
-		logprintf("SAMP Server version 0.3z R2-2 (Linux) detected. Initializing ...");
-	}
-	else if(*(DWORD *)0x80A7577 == 0x03E8FB81)
-	{
-		sampVersion = SAMP_VERSION_03Z_R2_1000P;
-		logprintf("SAMP Server version 0.3z R2-2 1000p (Linux) detected. Initializing ...");
-	}
-	else
-		return 6;
-#endif
-
 	// Create the ZMap instance
 	m_pZMap = new CZMap();
 	if(!m_pZMap)
 		return 1;
 
+	// Initialize necessary samp functions
+	CSAMPFunctions::PreInitialize();
 	// Initialize addresses
-	CAddress::Initialize(sampVersion);
+	CAddress::Initialize();
 	// Initialize SAMP Functions
 	CSAMPFunctions::Initialize();
 	// Install hooks
@@ -96,7 +73,7 @@ BYTE CServer::Initialize()
 		return 5;
 
 	// Push all the basic parameters
-	pCreateNPCParams->Write<int>(SAMP_NETVERSION);
+	pCreateNPCParams->Write<int>(CAddress::OFFSET_NetVersion);
 	pCreateNPCParams->Write<BYTE>(1);
 	// Check the maxnpc from the config
 	if(CSAMPFunctions::GetMaxNPC() == 0)
@@ -183,7 +160,7 @@ BYTE CServer::Initialize()
 bool CServer::DoesNameExist(char *szName)
 {
 	// Get the server interface
-	CSAMPServer *pSAMPServer = *(CSAMPServer **)CAddress::VAR_ServerPtr;
+	CSAMPServer *pSAMPServer = (CSAMPServer *)CAddress::VAR_ServerPtr;
 	// Loop through all the players
 	for(int i = 0; i < MAX_PLAYERS; i++)
 	{
@@ -201,7 +178,7 @@ bool CServer::DoesNameExist(char *szName)
 bool CServer::IsVehicleSeatOccupied(int iPlayerId, WORD wVehicleId, BYTE byteSeatId)
 {
 	// Get the server interface
-	CSAMPServer *pSAMPServer = *(CSAMPServer **)CAddress::VAR_ServerPtr;
+	CSAMPServer *pSAMPServer = (CSAMPServer *)CAddress::VAR_ServerPtr;
 	// Loop through all the players
 	for(int i = 0; i < MAX_PLAYERS; i++)
 	{

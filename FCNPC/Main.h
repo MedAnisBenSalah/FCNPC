@@ -36,6 +36,14 @@
 #include <stdarg.h> 
 #include <math.h>
 #include <string.h>
+// Detours include
+#ifdef _WIN32
+#	include <Detours.h>
+#else
+#	include "../subhook/subhook.h"
+#endif
+// ExceptionHandler includes
+#include "ExceptionHandler.h"
 // SDK includes
 #include "SDK/plugin.h"
 // Utils includes

@@ -39,10 +39,6 @@ void CUtils::GetPluginError(BYTE byteError, char *szError)
 			strcpy(szError, "Failed to create RPCParams instance");
 			break;
 
-		case 6:
-			strcpy(szError, "Unknown samp server version. FCNPC only supports 0.3z versions");
-			break;
-
 		default:
 			strcpy(szError, "");
 			break;
@@ -69,7 +65,7 @@ void CUtils::FCNPCSleep(DWORD dwMs)
 	usleep((dwMs) * 1000);
 #endif
 }
-
+// Thanks to kurta999 - YSF project
 DWORD CUtils::FindPattern(char *szPattern, char *szMask)
 {
 #ifdef WIN32
@@ -80,8 +76,8 @@ DWORD CUtils::FindPattern(char *szPattern, char *szMask)
 	DWORD dwBase = (DWORD)mInfo.lpBaseOfDll;
 	DWORD dwSize =  (DWORD)mInfo.SizeOfImage;
 #else
-	DWORD dwBase = 0;
-	DWORD dwSize = 0;
+	DWORD dwBase = 0x804b480;
+	DWORD dwSize = 0x8128B80 - dwBase;
 #endif
 	// Get the pattern length
 	DWORD dwPatternLength = (DWORD)strlen(szMask);
@@ -90,10 +86,9 @@ DWORD CUtils::FindPattern(char *szPattern, char *szMask)
 	{
 		bool bFound = true;
 		// Loop through the pattern caracters
-		for(DWORD j = 0; j < dwPatternLength; j++)
-		{
+		for (DWORD j = 0; j < dwPatternLength; j++)
 			bFound &= szMask[j] == '?' || szPattern[j] == *(char*)(dwBase + i + j);
-		}
+
 		// If found return the current address
 		if(bFound) 
 			return dwBase + i;
