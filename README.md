@@ -1,4 +1,4 @@
 # FCNPC
 FCNPC - Fully Controllable NPC is a popular SAMP plugin.
 
-Please checkout <a href="https://github.com/ziggi/FCNPC">ZiGGi's fork</a> for updates and documentation.
+Please check out <a href="https://github.com/ziggi/FCNPC">ZiGGi's fork</a> for updates and documentation.
